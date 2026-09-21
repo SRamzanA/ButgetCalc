@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>BudgetHelpApp</title>
+</head>
+<body>
+    <header></header>
+    
+    <main>
+        <!-- ЭКРАН 1: Начало месяца -->
+        <div class="card start-ctr" id="startView">
+            <h1 class="card__title">Начало месяца</h1>
+            
+            <form class="start-ctr__form" id="startForm">
+                <div class="form__field">
+                    <label for="monthlyBudget">Сумма на месяц:</label>
+                    <input type="number" id="monthlyBudget" placeholder="15000">
+                </div>
+
+                <div class="form__field">
+                    <label for="numberOfDays">Количество дней:</label>
+                    <input type="number" id="numberOfDays" placeholder="30">
+                </div>
+
+                <button class="form__button" type="submit">Начать месяц</button>
+            </form>
+        </div>
+
+        <!-- ЭКРАН 2: Главный -->
+        <div class="card main-ctr hidden" id="mainView">
+            <h1 class="card__title">Мой бюджет</h1>
+            <p class="main-ctr__day" id="dayInfo">День 1</p>
+            
+            <div class="info-block">
+                <div class="info-block__item">
+                    <span class="info-block__label">На карте:</span>
+                    <span class="info-block__value" id="cardBalance">0 ₽</span>
+                </div>
+                <div class="info-block__item">
+                    <span class="info-block__label">Бюджет на день:</span>
+                    <span class="info-block__value" id="dailyBudget">0 ₽</span>
+                </div>
+                <div class="info-block__item info-block__item--accent" style="margin-top: 1rem;">
+                    <span class="info-block__label" style="color: #006600">Доступно:</span>
+                    <span class="info-block__value" id="available">0 ₽</span>
+                </div>
+                <div class="info-block__item">
+                    <span class="info-block__label">Потрачено сегодня:</span>
+                    <span class="info-block__value" id="spentToday">0 ₽</span>
+                </div>
+                <div class="info-block__item">
+                    <span class="info-block__label">Осталось на день:</span>
+                    <span class="info-block__value" id="remainingToday">0 ₽</span>
+                </div>
+            </div>
+
+            <div class="actions">
+                <input type="number" class="actions__input" id="amountInput" placeholder="Сумма">
+                <div class="actions__buttons">
+                    <button class="actions__btn actions__btn--expense" id="addExpense">Расход</button>
+                    <button class="actions__btn actions__btn--income" id="addIncome">Доход</button>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="controls__btn" id="endDay">Завершить день</button>
+                <button class="controls__btn controls__btn--danger" id="endMonth">Завершить месяц</button>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+    
+    <script src="scripts/index.js"></script>
+</body>
+</html>

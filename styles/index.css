@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 1rem;
+    background-color: #f5f5f5;
+}
+
+.card {
+    width: 22rem;
+    min-height: 37rem;
+    border: 0.01rem solid black;
+    box-shadow: 0.1rem 0.1rem 0.5rem black;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+}
+
+.card__title {
+    font-size: 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.card__title::after {
+    content: "";
+    width: 15rem;
+    height: 0.1rem;
+    transform: translateY(1.5rem);
+    background-color: black;
+    position: absolute;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ============ НАЧАЛО МЕСЯЦА ============ */
+.form__field {
+    margin-bottom: 1rem;
+}
+
+.form__field label {
+    font-size: 1.1rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.form__field input {
+    width: 100%;
+    height: 1.8rem;
+    margin-top: 0.3rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    border: 0.1rem solid rgba(0, 0, 0, 0.8);
+    border-radius: 0.2rem;
+    transition: 0.3s;
+}
+
+.form__field input:focus {
+    outline: none;
+    border-color: black;
+}
+
+.form__button {
+    margin-top: 1rem;
+    width: 100%;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    font-family: inherit;
+    background-color: #fff;
+    border: 0.1rem solid rgba(0, 0, 0, 0.8);
+    border-radius: 0.2rem;
+    color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+.form__button:hover {
+    background-color: #eee;
+}
+
+/* ============ ГЛАВНЫЙ ЭКРАН ============ */
+.main-ctr__day {
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 1rem;
+}
+
+.info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.05rem solid rgba(0, 0, 0, 0.2);
+}
+
+.info-block__item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.info-block__item--accent .info-block__value {
+    color: #006600;
+    font-weight: bold;
+}
+
+.info-block__label {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.info-block__value {
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.actions__input {
+    width: 100%;
+    height: 1.8rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    border: 0.1rem solid rgba(0, 0, 0, 0.8);
+    border-radius: 0.2rem;
+}
+
+.actions__input:focus {
+    outline: none;
+    border-color: black;
+}
+
+.actions__buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.actions__btn {
+    flex: 1;
+    height: 2rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    border: 0.1rem solid rgba(0, 0, 0, 0.8);
+    border-radius: 0.2rem;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.actions__btn--expense {
+    color: #b00;
+    border-color: #b00;
+}
+
+.actions__btn--income {
+    color: #060;
+    border-color: #060;
+}
+
+.actions__btn:hover {
+    background-color: #f0f0f0;
+}
+
+.controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.controls__btn {
+    flex: 1;
+    height: 2rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    border: 0.1rem solid rgba(0, 0, 0, 0.8);
+    border-radius: 0.2rem;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.controls__btn--danger {
+    color: #b00;
+    border-color: #b00;
+}
+
+.controls__btn:hover {
+    background-color: #f0f0f0;
+}
