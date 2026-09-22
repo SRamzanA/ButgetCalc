@@ -1,5 +1,5 @@
 
-const STORAGE_KEY = 'budget-app-storage'
+const STORAGE_KEY = 'budget-app-state'
 let state = null;
 
 
