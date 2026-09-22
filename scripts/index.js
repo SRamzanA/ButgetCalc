@@ -1,12 +1,7 @@
-// === Ключ для localStorage ===
-const STORAGE_KEY = 'budget-app-state';
 
-// === Состояние приложения ===
+const STORAGE_KEY = 'budget-app-storage'
 let state = null;
 
-// ============================================================
-//                        РАБОТА С ХРАНИЛИЩЕМ
-// ============================================================
 
 function saveState() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -22,11 +17,8 @@ function loadState() {
     }
 }
 
-// ============================================================
-//                          ЛОГИКА
-// ============================================================
 
-// Начало месяца: создаём новое состояние
+// Начало месяца
 function startMonth(monthlyBudget, daysInMonth) {
     const dailyBudget = monthlyBudget / daysInMonth;
 
@@ -36,11 +28,11 @@ function startMonth(monthlyBudget, daysInMonth) {
         dailyBudget: dailyBudget,
         currentDay: 1,
 
-        // На карте — реальные деньги
+        // На карте
         cardBalance: monthlyBudget,
 
-        // Доступно — сколько можно потратить сегодня
-        // Включает перенос с прошлых дней
+        // Доступно
+        // Перенос
         available: dailyBudget,
 
         // Потрачено сегодня
@@ -74,12 +66,9 @@ function addIncome(amount) {
 }
 
 // Завершить день
-// Логика: доступное переносится + добавляется новый дневной бюджет
 function endDay() {
-    // Доступное (уже уменьшенное на траты) + новый бюджет на день
     state.available = state.available + state.dailyBudget;
 
-    // Сбрасываем счётчики дня
     state.spentToday = 0;
     state.remainingToday = state.dailyBudget;
 
@@ -95,9 +84,6 @@ function endMonth() {
     localStorage.removeItem(STORAGE_KEY);
 }
 
-// ============================================================
-//                       ВСПОМОГАТЕЛЬНОЕ
-// ============================================================
 
 function formatMoney(n) {
     const rounded = Math.round(n * 100) / 100;
@@ -108,9 +94,6 @@ function clearInputs() {
     document.getElementById('amountInput').value = '';
 }
 
-// ============================================================
-//                          ОТРИСОВКА
-// ============================================================
 
 function render() {
     const startView = document.getElementById('startView');
@@ -135,14 +118,11 @@ function render() {
     document.getElementById('remainingToday').textContent = formatMoney(state.remainingToday);
 }
 
-// ============================================================
-//                          СОБЫТИЯ
-// ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     state = loadState();
 
-    // --- Старт месяца ---
+    // Старт месяца
     document.getElementById('startForm').addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -162,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
     });
 
-    // --- Добавить расход ---
+    // Добавить расход
     document.getElementById('addExpense').addEventListener('click', () => {
         const amount = parseFloat(document.getElementById('amountInput').value);
 
@@ -176,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
     });
 
-    // --- Добавить доход ---
+    // Добавить доход
     document.getElementById('addIncome').addEventListener('click', () => {
         const amount = parseFloat(document.getElementById('amountInput').value);
 
@@ -190,14 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
     });
 
-    // --- Завершить день ---
+    // Завершить день
     document.getElementById('endDay').addEventListener('click', () => {
         if (!confirm('Завершить день? Остаток перенесётся на завтра.')) return;
         endDay();
         render();
     });
 
-    // --- Завершить месяц ---
+    // Завершить месяц
     document.getElementById('endMonth').addEventListener('click', () => {
         if (!confirm('Завершить месяц? Все данные будут сброшены.')) return;
         endMonth();
