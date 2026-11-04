@@ -17,8 +17,6 @@ function loadState() {
 }
 
 // Начало месяца
-let newDay = new Date()
-document.getElementById("realDay").textContent = `${newDay.getDate()}.${newDay.getMonth() + 1}.${newDay.getFullYear()}  ${newDay.getHours()}:${newDay.getMinutes()}`
 
 function startMonth(monthlyBudget, daysInMonth) {
     const dailyBudget = monthlyBudget / daysInMonth;
