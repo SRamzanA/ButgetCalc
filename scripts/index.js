@@ -1,7 +1,6 @@
+const STORAGE_KEY = 'budget-app-state';
 
-const STORAGE_KEY = 'budget-app-state'
 let state = null;
-
 
 function saveState() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -17,10 +16,13 @@ function loadState() {
     }
 }
 
-
 // Начало месяца
+let newDay = new Date()
+document.getElementById("realDay").textContent = `${newDay.getDate()}.${newDay.getMonth() + 1}.${newDay.getFullYear()}  ${newDay.getHours()}:${newDay.getMinutes()}`
+
 function startMonth(monthlyBudget, daysInMonth) {
     const dailyBudget = monthlyBudget / daysInMonth;
+    
 
     state = {
         monthlyBudget: monthlyBudget,
@@ -32,7 +34,7 @@ function startMonth(monthlyBudget, daysInMonth) {
         cardBalance: monthlyBudget,
 
         // Доступно
-        // Перенос
+        // Перенос с прошлых дней
         available: dailyBudget,
 
         // Потрачено сегодня
@@ -72,7 +74,6 @@ function endDay() {
     state.spentToday = 0;
     state.remainingToday = state.dailyBudget;
 
-    // Новый день
     state.currentDay += 1;
 
     saveState();
@@ -84,7 +85,6 @@ function endMonth() {
     localStorage.removeItem(STORAGE_KEY);
 }
 
-
 function formatMoney(n) {
     const rounded = Math.round(n * 100) / 100;
     return rounded.toLocaleString('ru-RU') + ' ₽';
@@ -93,7 +93,6 @@ function formatMoney(n) {
 function clearInputs() {
     document.getElementById('amountInput').value = '';
 }
-
 
 function render() {
     const startView = document.getElementById('startView');
@@ -117,7 +116,6 @@ function render() {
     document.getElementById('spentToday').textContent = formatMoney(state.spentToday);
     document.getElementById('remainingToday').textContent = formatMoney(state.remainingToday);
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
     state = loadState();
