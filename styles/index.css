@@ -46,7 +46,7 @@ body {
     display: none !important;
 }
 
-/* НАЧАЛО МЕСЯЦА */
+/* ============ НАЧАЛО МЕСЯЦА ============ */
 .form__field {
     margin-bottom: 1rem;
 }
@@ -90,7 +90,7 @@ body {
     background-color: #eee;
 }
 
-/* ГЛАВНЫЙ ЭКРАН */
+/* ============ ГЛАВНЫЙ ЭКРАН ============ */
 .main-ctr__day {
     font-size: 0.9rem;
     color: rgba(0, 0, 0, 0.6);
@@ -112,13 +112,8 @@ body {
     font-size: 1rem;
 }
 
-.info-block__item--accent-green {
-    color: #060;
-    font-weight: bold;
-}
-
-.info-block__item--accent-red {
-    color: #b00;
+.info-block__item--accent .info-block__value {
+    color: #006600;
     font-weight: bold;
 }
 
